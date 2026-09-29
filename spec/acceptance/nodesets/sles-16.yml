@@ -2,10 +2,7 @@ HOSTS:
   opensuse-16-x64:
     platform: el-9-x86_64
     hypervisor: docker
-    image: rockylinux:9
+    image: puppet/puppet-agent-el-9-x86_64:latest
     docker_cmd: '["/usr/sbin/init"]'
-    docker_image_commands:
-      - 'dnf install -y tar gzip shadow-utils openssh-server initscripts'
-      - 'ln -s /usr/sbin/service /sbin/service'
 CONFIG:
   type: highspeed
