@@ -1,15 +1,16 @@
 ---
 pam::common_files_create_links: true
-pam::common_files_suffix: '_pc'
+pam::common_files_suffix: ''
 pam::common_files:
-  - common_account
-  - common_auth
-  - common_password
-  - common_session
+  - 'common-account'
+  - 'common-auth'
+  - 'common-password'
+  - 'common-session'
 
-pam::pam_d_login_template: pam/login.suse16.erb
-pam::pam_d_sshd_template: pam/sshd.suse16.erb
-pam::package_name: pam
+pam::pam_d_login_template: 'pam/login.suse16.erb'
+pam::pam_d_sshd_template: 'pam/sshd.suse16.erb'
+pam::package_name:
+  - 'libpam-modules'
 pam::pam_auth_lines:
   - 'auth  required  pam_env.so'
   - 'auth  required  pam_unix.so try_first_pass'
