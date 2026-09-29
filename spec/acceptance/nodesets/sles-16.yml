@@ -5,4 +5,4 @@ HOSTS:
     image: ://suse.com
     docker_cmd: '["/usr/lib/systemd/systemd"]'
     docker_image_commands:
-      - 'zypper install -y tar gzip'
+      - 'zypper install -y tar gzip shadow'
