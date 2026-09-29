@@ -6,3 +6,5 @@ HOSTS:
     docker_cmd: '["/usr/lib/systemd/systemd"]'
     docker_image_commands:
       - 'zypper install -y tar gzip shadow'
+CONFIG:
+  type: highspeed
