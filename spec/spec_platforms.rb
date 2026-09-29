@@ -92,7 +92,7 @@ end
 
 def common_files_create_links(os)
   case os_id(os)
-  when %r{redhat-(5|6|7|8)}, %r{sles-11}, %r{sles-12}, %r{sles-15}, %r{sles-16}
+  when %r{redhat-(5|6|7|8)}, %r{sles-11}, %r{sles-12}, %r{sles-15}
     true
   else
     false
