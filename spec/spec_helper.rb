@@ -39,30 +39,33 @@ module RspecPuppetFacts
   class << self
     def on_supported_os(_opts = {})
       matrix = {}
-      facts_file = File.expand_path('../fixtures/facts/redhat-10-x86_64.json', __FILE__)
+      
+      # === RedHat 10 Facts Setup ===
+      rh_facts_file = File.expand_path('../fixtures/facts/redhat-10-x86_64.json', __FILE__)
+      rh_facts = if File.exist?(rh_facts_file)
+                   JSON.parse(File.read(rh_facts_file))
+                 else
+                   {
+                     'os' => { 'name' => 'RedHat', 'family' => 'RedHat', 'release' => { 'major' => '10', 'minor' => '0', 'full' => '10.0' } },
+                     'operatingsystem' => 'RedHat', 'operatingsystemrelease' => '10.0', 'operatingsystemmajrelease' => '10',
+                     'osfamily' => 'RedHat', 'hardwaremodel' => 'x86_64', 'architecture' => 'x86_64'
+                   }
+                 end
+      matrix['redhat-10-x86_64'] = rh_facts
 
-      raw_facts = if File.exist?(facts_file)
-                    JSON.parse(File.read(facts_file))
-                  else
-                    {
-                      'os' => {
-                        'name' => 'RedHat',
-                        'family' => 'RedHat',
-                        'release' => { 'major' => '10', 'minor' => '0', 'full' => '10.0' }
-                      },
-                      'operatingsystem' => 'RedHat',
-                      'operatingsystemrelease' => '10.0',
-                      'operatingsystemmajrelease' => '10',
-                      'osfamily' => 'RedHat',
-                      'hardwaremodel' => 'x86_64',
-                      'architecture' => 'x86_64'
-                    }
-                  end
+      # === SLES 16 Facts Setup ===
+      sles_facts_file = File.expand_path('../fixtures/facts/sles-16-x86_64.json', __FILE__)
+      sles_facts = if File.exist?(sles_facts_file)
+                     JSON.parse(File.read(sles_facts_file))
+                   else
+                     {
+                       'os' => { 'name' => 'SLES', 'family' => 'Suse', 'release' => { 'major' => '16', 'minor' => '0', 'full' => '16.0' } },
+                       'operatingsystem' => 'SLES', 'operatingsystemrelease' => '16.0', 'operatingsystemmajrelease' => '16',
+                       'osfamily' => 'Suse', 'hardwaremodel' => 'x86_64', 'architecture' => 'x86_64'
+                     }
+                   end
+      matrix['sles-16-x86_64'] = sles_facts
 
-      processed_facts = raw_facts.dup
-      processed_facts[:os] = raw_facts['os'] if raw_facts['os']
-
-      matrix['redhat-10-x86_64'] = processed_facts
       matrix
     end
   end
@@ -102,4 +105,4 @@ def ensure_module_defined(module_name)
     last_module.const_set(next_module, Module.new) unless last_module.const_defined?(next_module, false)
     last_module.const_get(next_module, false)
   end
-end
+end 
