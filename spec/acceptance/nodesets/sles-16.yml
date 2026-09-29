@@ -1,10 +1,10 @@
 HOSTS:
-  sles-16-x64:
+  opensuse-16-x64:
     platform: sles-16-x86_64
     hypervisor: docker
-    image: opensuse/leap:latest
-    docker_cmd: '["/usr/lib/systemd/systemd"]'
+    image: rockylinux:9
+    docker_cmd: '["/usr/sbin/init"]'
     docker_image_commands:
-      - 'zypper install -y tar gzip shadow'
+      - 'dnf install -y tar gzip shadow-utils openssh-server'
 CONFIG:
   type: highspeed
