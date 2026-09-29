@@ -91,8 +91,9 @@ RSpec.configure do |c|
     Puppet.settings[:strict_variables] = true
     allow(self).to receive(:on_supported_os).and_return(RspecPuppetFacts.on_supported_os) if respond_to?(:allow)
 
+    # === ఇక్కడ పప్పెట్ కంపైలర్ స్కోప్ లోపల getvar ఫంక్షన్‌ను నేరుగా స్టబ్ చేసాము ===
     if respond_to?(:allow)
-      allow(Puppet::Parser::Functions.function(:getvar)).to receive(:call).and_return(['libpam-modules'])
+      allow_any_instance_of(Puppet::Parser::Scope).to receive(:call_function).with('getvar', any_args).and_return(['libpam-modules'])
     end
   end
 
