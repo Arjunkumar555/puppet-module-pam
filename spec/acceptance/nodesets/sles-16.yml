@@ -2,9 +2,11 @@ HOSTS:
   sles-16-x64:
     platform: sles-16-x86_64
     hypervisor: docker
-    image: ://suse.com
+    dockerfile: |
+      FROM ://suse.com
+      RUN zypper -n in openssh curl ntp && ssh-keygen -A
+      RUN mkdir -p /var/run/sshd && echo root:root | chpasswd
+      RUN zypper install -y tar gzip shadow
     docker_cmd: '["/usr/lib/systemd/systemd"]'
-    docker_image_commands:
-      - 'zypper install -y tar gzip shadow'
 CONFIG:
   type: highspeed
