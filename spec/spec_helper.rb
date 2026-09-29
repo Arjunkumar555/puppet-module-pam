@@ -90,8 +90,7 @@ RSpec.configure do |c|
     Puppet.settings[:strict] = :warning
     Puppet.settings[:strict_variables] = true
     allow(self).to receive(:on_supported_os).and_return(RspecPuppetFacts.on_supported_os) if respond_to?(:allow)
-    
-    # === ఇక్కడ getvar ఫంక్షన్‌ను నేరుగా మాక్ చేసి ఎర్రర్‌ను తొలగించాము ===
+
     if respond_to?(:allow)
       allow(Puppet::Parser::Functions.function(:getvar)).to receive(:call).and_return(['libpam-modules'])
     end
