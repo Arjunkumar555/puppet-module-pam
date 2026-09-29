@@ -59,9 +59,14 @@ module RspecPuppetFacts
                      JSON.parse(File.read(sles_facts_file))
                    else
                      {
+                       :os => { 'name' => 'SLES', 'family' => 'Suse', 'release' => { 'major' => '16', 'minor' => '0', 'full' => '16.0' } },
                        'os' => { 'name' => 'SLES', 'family' => 'Suse', 'release' => { 'major' => '16', 'minor' => '0', 'full' => '16.0' } },
-                       'operatingsystem' => 'SLES', 'operatingsystemrelease' => '16.0', 'operatingsystemmajrelease' => '16',
-                       'osfamily' => 'Suse', 'hardwaremodel' => 'x86_64', 'architecture' => 'x86_64'
+                       'operatingsystem' => 'SLES',
+                       'operatingsystemrelease' => '16.0',
+                       'operatingsystemmajrelease' => '16',
+                       'osfamily' => 'Suse',
+                       'hardwaremodel' => 'x86_64',
+                       'architecture' => 'x86_64'
                      }
                    end
       matrix['sles-16-x86_64'] = sles_facts
