@@ -15,6 +15,12 @@ include RspecPuppetFacts
 default_facts = {
   puppetversion: Puppet.version,
   facterversion: Facter.version,
+  # === SLES 16 కోసం getvar ఫంక్షన్ వేరియబుల్స్ ఇక్కడ మాక్ చేసాము ===
+  'pam_sles_16_package' => ['libpam-modules'],
+  'pam_sles_16_common_auth' => ['common-auth'],
+  'pam_sles_16_common_account' => ['common-account'],
+  'pam_sles_16_common_password' => ['common-password'],
+  'pam_sles_16_common_session' => ['common-session'],
 }
 
 default_fact_files = [
