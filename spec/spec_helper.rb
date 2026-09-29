@@ -39,7 +39,7 @@ module RspecPuppetFacts
   class << self
     def on_supported_os(_opts = {})
       matrix = {}
-      
+
       # === RedHat 10 Facts Setup ===
       rh_facts_file = File.expand_path('../fixtures/facts/redhat-10-x86_64.json', __FILE__)
       rh_facts = if File.exist?(rh_facts_file)
@@ -105,4 +105,4 @@ def ensure_module_defined(module_name)
     last_module.const_set(next_module, Module.new) unless last_module.const_defined?(next_module, false)
     last_module.const_get(next_module, false)
   end
-end 
+end
