@@ -5,6 +5,7 @@ HOSTS:
     image: rockylinux:9
     docker_cmd: '["/usr/sbin/init"]'
     docker_image_commands:
-      - 'dnf install -y tar gzip shadow-utils openssh-server'
+      - 'dnf install -y tar gzip shadow-utils openssh-server initscripts'
+      - 'ln -s /usr/sbin/service /sbin/service'
 CONFIG:
   type: highspeed
