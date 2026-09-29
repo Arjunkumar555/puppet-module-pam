@@ -1,8 +1,8 @@
 HOSTS:
-  opensuse-16-x64:
-    platform: el-9-x86_64
+  sles-16-x64:
+    platform: el-7-x86_64
     hypervisor: docker
-    image: puppet/puppet-agent-el-9-x86_64:latest
+    image: centos:7
     docker_cmd: '["/usr/sbin/init"]'
 CONFIG:
   type: highspeed
